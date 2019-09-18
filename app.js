@@ -10,6 +10,8 @@ const serveFavicon = require('serve-favicon');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
+const registerRouter = require('./routes/register');
+//const signinRouter = require('./routes/signin');
 
 const app = express();
 
@@ -30,8 +32,11 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 
+
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/register', registerRouter);
+//app.use('/signin', signinRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {
