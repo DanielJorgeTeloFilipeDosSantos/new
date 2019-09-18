@@ -4,7 +4,12 @@ const { Router } = require('express');
 const router = Router();
 
 router.get('/', (req, res, next) => {
-  res.render('user', { name: 'James Dean' });
+  res.render('index');
+});
+
+router.post('/sign-out', (req, res, next) => {
+  req.session.destroy();
+  res.redirect('/');
 });
 
 

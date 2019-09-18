@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 
 const routeGuardMiddleware = (req, res, next) => {
   if (!req.session.user) {
-    res.redirect('/authentication/sign-in');
+    res.redirect('/sign-in');
   } else {
     next();
   }
