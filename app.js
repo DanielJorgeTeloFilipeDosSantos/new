@@ -12,7 +12,6 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/user');
 const registerRouter = require('./routes/register');
 const signinRouter = require('./routes/signin');
-const cartRouter = require('./routes/cart');
 const singleUserProfileRouter = require('./routes/singleUserProfile');
 const adminRouter = require('./routes/admin');
 const authenticationRouter = require('./routes/authentication');
@@ -82,8 +81,6 @@ app.use('/user', usersRouter);
 app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
 app.use('/singleUserProfile', singleUserProfileRouter);
-app.use('/cart', cartRouter);
-app.use('/', cartRouter);
 app.use('/authentication', authenticationRouter);
 
 
