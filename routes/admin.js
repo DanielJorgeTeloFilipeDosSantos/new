@@ -1,8 +1,11 @@
 'use strict';
 
-const { Router } = require('express');
+const {
+  Router
+} = require('express');
 const router = Router();
 const Pizzeria = require('./../models/pizzeria');
+const Menu = require('./../models/menu');
 const bcrypt = require('bcrypt');
 
 const routeGuardMiddleware = (req, res, next) => {
@@ -17,29 +20,65 @@ router.get('/admin', (req, res, next) => {
   res.render('pizzeria');
 });
 
+router.get('/admin/auth', (req, res, next) => {
+  res.render('adminauth');
+});
+
+router.get('/admin/auth/create', (req, res, next) => {
+  res.render('addnew');
+});
+
 router.post('/admin', (req, res, next) => {
-  const name = req.body.name;
   const email = req.body.email;
-  const phone = req.body.phone;
-  const address = req.body.address;
   const password = req.body.password;
 
-  bcrypt.hash(password, 10)
-    .then(hash => {
-      return Pizzeria.create({
-        email,
-        passwordHash: hash
-      });
+  let auxiliaryUser;
+
+  Pizzeria.findOne({
+      email
     })
     .then(user => {
-      req.session.user = {
-        _id: user._id
-      };
-      res.redirect('/admin');
+      if (!user) {
+        res.render('index');
+      } else {
+        auxiliaryUser = user;
+        return bcrypt.compare(password, user.passwordHash);
+      }
+    })
+    .then(matches => {
+      if (!matches) {
+        res.render('index');
+      } else {
+        req.session.user = {
+          _id: auxiliaryUser._id,
+          email: auxiliaryUser.email,
+          cart: []
+        };
+        res.redirect('/admin/auth');
+      }
     })
     .catch(error => {
-      console.log('There was an error in the sign up process.', error);
+      console.log('There was an error signing up the user', error);
+      next(error);
     });
+});
+
+router.post('/admin/auth/create', (req, res, next) => {
+const name = req.body.name;
+const price = req.body.price;
+const ingredients = req.body.ingredients;
+
+
+Menu.create({
+  name,
+  price,
+  ingredients
+})
+.then(() => {
+res.redirect('/admin/auth/create');
+}).catch(error => {
+  console.log('There was an error in the create product process.', error);
+});
 });
 
 

@@ -14,6 +14,7 @@ const registerRouter = require('./routes/register');
 const signinRouter = require('./routes/signin');
 const singleUserProfileRouter = require('./routes/singleUserProfile');
 const adminRouter = require('./routes/admin');
+const cartRouter = require('./routes/cart');
 const authenticationRouter = require('./routes/authentication');
 
 //const signinRouter = require('./routes/signin');
@@ -77,10 +78,12 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/', adminRouter);
+app.use('/', cartRouter);
 app.use('/user', usersRouter);
 app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
 app.use('/singleUserProfile', singleUserProfileRouter);
+app.use('/', singleUserProfileRouter);
 app.use('/authentication', authenticationRouter);
 
 

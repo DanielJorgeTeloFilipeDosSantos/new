@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-
+const ObjectId = mongoose.Schema.Types.ObjectId;
 const schema = new mongoose.Schema({
   name: {
     type: String,
@@ -31,7 +31,11 @@ const schema = new mongoose.Schema({
   passwordHash: {
     type: String,
     required: true
-  }
+  },
+  _order: [{
+    type:ObjectId,
+    ref: "Menu"
+  }]
 });
 
 module.exports = mongoose.model('User', schema);

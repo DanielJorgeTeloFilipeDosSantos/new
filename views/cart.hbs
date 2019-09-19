@@ -1,26 +1,29 @@
 <div class='p-5 m-5'>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">This is your order</h1><span><img src="/images/cart2.svg" width="30" height="30"
+          alt=""></span>
+      <p class="lead">Click order to finish your order after checking the details</p>
+    </div>
   </div>
-</div>
 
-<div>
+  <div>
     <h2>pepper pizza price :12€</h2>
     <h2>pepper pizza price :12€</h2>
     <h2>pepper pizza price :12€</h2>
     <h2>pepper pizza price :12€</h2>
     <h2>total :68€</h2>
+  </div>
+
+  {{#each data._order}}
+          <h1>asdasd</h1>
+          <p class="card-text">{{this._order}}</p>
+          <hr>
+  {{/each}}
+
+  <div class='container p-2 m-2'>
+
+  </div>
+  <button type="button" class="btn btn-danger">Order</button>
 </div>
-
-<div class='container p-2 m-2'>
-
-</div>
-    <button type="button" class="btn btn-danger">Order</button>
-</div>
-
-
-
-

@@ -1,8 +1,10 @@
- {{#if myerror}}
-   <div class='container p-5 m-5'>
-       <h2>{{myerror}}</h2>
-   </div>
-   {{/if}}
+{{#if myerror}}
+<div class='container p-5 m-5'>
+    <h2>{{myerror}}</h2>
+</div>
+{{/if}}
+
+
 
 <div class='bg-danger'>
     <div>
@@ -10,28 +12,28 @@
     </div>
 
 
-    <div class="container p-3">
+    <div class="container p-5">
         <div class="row">
-            <div class="col-sm">
-                <div class="card bg-dark text-white">
-                    <img src="/images/pizza1.svg" class="card-img" alt="...">
-                   
+            {{#each menu}}
+            <form>
+                <div class="col">
+                    <div class="card" style="width: 20rem;">
+                        <img src="https://source.unsplash.com/weekly?pizza" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.name}}</h5>
+                            <p class="card-text">{{this._id}}</p>
+                            <p class="card-text">{{this.price}}</p>
+                            <p class="card-text">{{this.ingredients}}</p>
+                            <a class="btn btn-primary"href="/user/newRoute/{{this._id}}">Add to cart</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm">
-                <div class="card bg-dark text-white">
-                    <img src="/images/pizza2.svg" class="card-img" alt="...">
-                    
-                </div>
-            </div>
-            <div class="col-sm">
-                <div class="card bg-dark text-white">
-                    <img src="/images/pizza3.svg" class="card-img" alt="...">
-                
-                </div>
-            </div>
+            </form>
+            {{/each}}
+
         </div>
     </div>
+
 
 
 

@@ -30,6 +30,7 @@ router.post('/createAccount', (req, res, next) => {
     const email = req.body.email;
     const phone = req.body.phone;
     const address = req.body.address;
+    const _order = [];
     const password = req.body.password;
   
     bcrypt.hash(password, 10)
@@ -39,6 +40,7 @@ router.post('/createAccount', (req, res, next) => {
           email,
           phone,
           address,
+          _order,
           passwordHash: hash
         });
       })
