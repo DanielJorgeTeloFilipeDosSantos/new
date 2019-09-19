@@ -23,7 +23,7 @@ router.get('/signin', (req, res, next) => {
     User.findOne({ email })
       .then(user => {
         if (!user) {
-          throw new Error('USER_NOT_FOUND');
+          res.render('index',{myerror: 'user not found'});
         } else {
           auxiliaryUser = user;
           return bcrypt.compare(password, user.passwordHash);
@@ -31,7 +31,7 @@ router.get('/signin', (req, res, next) => {
       })
       .then(matches => {
         if (!matches) {
-          throw new Error('PASSWORD_DOESNT_MATCH');
+          res.render('index',{myerror: 'user not found'});
         } else {
           req.session.user = {
             _id: auxiliaryUser._id,
