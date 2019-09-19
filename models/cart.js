@@ -3,23 +3,19 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  name: {
+  idutilizador: {
     type: String,
     required: true,
     lowercase: true,
     trim: true
     //unique: true
   },
-  price: {
+  items: {
     type: String,
     required: true,
     lowercase: true,
     trim: true
     //unique: true
-  },
-  date:{
-    type: Date, 
-    default: Date.now
   }
 });
 

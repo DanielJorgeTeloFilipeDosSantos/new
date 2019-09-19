@@ -83,6 +83,7 @@ app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
 app.use('/singleUserProfile', singleUserProfileRouter);
 app.use('/cart', cartRouter);
+app.use('/', cartRouter);
 app.use('/authentication', authenticationRouter);
 
 
