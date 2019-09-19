@@ -15,12 +15,17 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>{{title}}</title>
   <link rel='stylesheet' href='/styles/style.css' />
+
+
+ <script src="../scripts/cardEventHandlers.js"></script>
+
+
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     {{#if user}}
-        <a class="navbar-brand text-danger" href="#">Giovani Pizza</a>
+    <a class="navbar-brand text-danger" href="#">Giovani Pizza</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,16 +34,21 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
         <a class="nav-item nav-link" href="/">Menu</a>
-        <a class="nav-item nav-link" href="/">My Profile</a>
+        <a class="nav-item nav-link" href="/singleUserProfile">My Profile</a>
         <form method="POST" action="/user/sign-out">
-              <button class="nav-item nav-link">Sign Out</button>
+          <button class="nav-item nav-link">Sign Out</button>
         </form>
-        <a class="nav-item nav-link" href="/">name of the user</a>
+
+      
+        <a class="navbar-brand navbar-right" href="/cart">
+          <img src="/images/cart2.svg" width="30" height="30" alt="">
+        </a>
+        
       </div>
     </div>
     {{else}}
 
-        <a class="navbar-brand text-danger" href="#">Giovani Pizza</a>
+    <a class="navbar-brand text-danger" href="#">Giovani Pizza</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
       aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

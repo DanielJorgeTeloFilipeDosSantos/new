@@ -3,22 +3,24 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  email: {
+  name: {
     type: String,
     required: true,
     lowercase: true,
     trim: true
     //unique: true
   },
-  passwordHash: {
+  price: {
     type: String,
-    required: true
+    required: true,
+    lowercase: true,
+    trim: true
+    //unique: true
+  },
+  date:{
+    type: Date, 
+    default: Date.now
   }
 });
 
-
-module.exports = mongoose.model('Pizzeria', schema);
-
-
-
-
+module.exports = mongoose.model('Cart', schema);

@@ -10,28 +10,19 @@ const schema = new mongoose.Schema({
     trim: true
     //unique: true
   },
-  email: {
+  price: {
     type: String,
     required: true,
     lowercase: true,
     trim: true
     //unique: true
   },
-  phone:{
-    type: String,
-    required: true,
-    trim: true
-  },
-  address:{
+  ingredients:{
     type: String,
     required: true,
     lowercase: true,
     trim: true
-  },
-  passwordHash: {
-    type: String,
-    required: true
   }
 });
 
-module.exports = mongoose.model('User', schema);
+module.exports = mongoose.model('Menu', schema);

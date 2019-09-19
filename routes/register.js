@@ -26,13 +26,19 @@ const routeGuardMiddleware = (req, res, next) => {
   
 
 router.post('/createAccount', (req, res, next) => {
+    const name = req.body.name;
     const email = req.body.email;
+    const phone = req.body.phone;
+    const address = req.body.address;
     const password = req.body.password;
   
     bcrypt.hash(password, 10)
       .then(hash => {
         return User.create({
+          name,
           email,
+          phone,
+          address,
           passwordHash: hash
         });
       })

@@ -7,42 +7,39 @@ const User = require('./../models/user');
 const bcrypt = require('bcrypt');
 
 router.get('/', (req, res, next) => {
-    res.render('index');
+    //const id = req.session.user._id;
+    User.findById(req.session.user._id)
+    .then(user => {
+        const data ={
+            user
+        }
+        res.render('singleUserProfile', data);
+        
+    })
+
+
+
   });
 
-router.get('/signin', (req, res, next) => {
-    res.render('signin');
-  });
-  
-  router.post('/signin', (req, res, next) => {
+router.post('/edit-user', (req, res, next) => {
+    const name = req.body.name;
     const email = req.body.email;
-    const password = req.body.password;
-    
-    let auxiliaryUser;
-  
-    User.findOne({ email })
-      .then(user => {
-        if (!user) {
-          throw new Error('USER_NOT_FOUND');
-        } else {
-          auxiliaryUser = user;
-          return bcrypt.compare(password, user.passwordHash);
-        }
-      })
-      .then(matches => {
-        if (!matches) {
-          throw new Error('PASSWORD_DOESNT_MATCH');
-        } else {
-          req.session.user = {
-            _id: auxiliaryUser._id
-          };
-          res.redirect('/');
-        }
-      })
-      .catch(error => {
-        console.log('There was an error signing up the user', error);
-        next(error);
+    const address = req.body.address;
+    const phone = req.body.phone;
+
+
+    User.findByIdAndUpdate(req.session.user._id, {
+        name,
+        email,
+        address,
+        phone
+    })
+    .then(res.redirect('/singleUserProfile'))
+    .catch(error => {
+        console.log('There was an error in the update process.', error);
       });
   });
+
+
 
   module.exports = router;

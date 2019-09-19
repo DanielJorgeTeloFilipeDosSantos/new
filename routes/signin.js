@@ -34,7 +34,9 @@ router.get('/signin', (req, res, next) => {
           throw new Error('PASSWORD_DOESNT_MATCH');
         } else {
           req.session.user = {
-            _id: auxiliaryUser._id
+            _id: auxiliaryUser._id,
+            email: auxiliaryUser.email,
+            cart: []
           };
           res.redirect('/');
         }
