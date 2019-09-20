@@ -17,7 +17,30 @@
         </div>
     </nav>
 
+    {{!-- <script> </script> --}}
+  <h1 class='p-5 m-5'>Current Orders:</h1>
 
-  <h1 class='p-5 m-5'>asdasdasdsadasd</h1>
+  {{#each orders}}
+  <div class='container'>
+    <div class='row'>
+        <hr>
+      <div class='col-sm'>
+          <h1 class="card-text d-flex justify-content-start ">{{this.name}}</h1>
+      </div>
+      <div class='col-sm'>
+          <h1 class="card-text d-flex justify-content-end ">{{this.address}}</h1>
+      </div>
+      <div class='container d-flex justify-content-end'>
+          <form method="PUT" action="/user/sign-out">
+          <button class="btn nav-item nav-link">Send Order ---&gt;</button>
+        </form>
+
+      </div>
+
+    </div>
+    <hr>
+  </div>
+
+  {{/each}}
 
 </div>

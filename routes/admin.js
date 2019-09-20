@@ -7,6 +7,8 @@ const router = Router();
 const Pizzeria = require('./../models/pizzeria');
 const Menu = require('./../models/menu');
 const bcrypt = require('bcrypt');
+const Orders = require('./../models/orders');
+
 
 const routeGuardMiddleware = (req, res, next) => {
   if (!req.session.user) {
@@ -20,11 +22,44 @@ router.get('/admin', (req, res, next) => {
   res.render('pizzeria');
 });
 
-router.get('/admin/auth', (req, res, next) => {
-  res.render('adminauth');
-});
+// router.get('/admin/orders', (req, res) => {
+//   Orders.find()
+//     .then(orders => {
+//       const name = orders.name;
+//       const address = orders.address;
+//       const date = orders.date;
 
-router.get('/admin/auth/create', (req, res, next) => {
+//       const data = {
+//         name,
+//         address,
+//         date
+//       };
+//       res.redirect('/admin/auth', data);
+//     })
+//     .catch(error => {
+//       console.log('There was an error in data2  process.', error);
+//     });
+// });
+
+//--------------------------------------------------------------------------------
+
+ router.get('/admin/auth', (req, res) => {
+  Orders.find()
+  .then(orders => {
+    console.log('orders',orders);
+    const data = {orders};
+    res.render('adminauth', data);
+  })
+  .catch(error => {
+    console.log('There was an error in data2  process.', error);
+  });
+  });
+
+
+//--------------------------------------------------------------------------------
+
+
+router.get('/admin/auth/create', (req, res) => {
   res.render('addnew');
 });
 
