@@ -45,6 +45,7 @@ router.get('/admin', (req, res, next) => {
 
  router.get('/admin/auth', (req, res) => {
   Orders.find()
+  .populate()
   .then(orders => {
     console.log('orders',orders);
     const data = {orders};
