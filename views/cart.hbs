@@ -5,25 +5,53 @@
       <h1 class="display-4">This is your order</h1><span><img src="/images/cart2.svg" width="30" height="30"
           alt=""></span>
       <p class="lead">Click order to finish your order after checking the details</p>
+      <br>
+      <br>
+      <hr>
+      <h2>We are sending this address:</h2>
+      <br>
+      <p class="lead">{{user.address}}</p>
     </div>
   </div>
 
-  <div>
-    <h2>pepper pizza price :12€</h2>
-    <h2>pepper pizza price :12€</h2>
-    <h2>pepper pizza price :12€</h2>
-    <h2>pepper pizza price :12€</h2>
-    <h2>total :68€</h2>
+  {{#each orderlist}}
+  <div class='container'>
+    <div class='row'>
+      <div class='col-sm'>
+          <h1 class="card-text d-flex justify-content-start ">{{this.name}}</h1>
+      </div>
+      <div class='col-sm'>
+          <h1 class="card-text d-flex justify-content-end ">{{this.price}}€</h1>
+      </div>
+
+    </div>
+    <hr>
   </div>
 
-  {{#each data._order}}
-          <h1>asdasd</h1>
-          <p class="card-text">{{this._order}}</p>
-          <hr>
   {{/each}}
+
+    <div class='container pt-5'>
+    <div class='row'>
+      <div class='col-sm'>
+          <h1 class="text-secondary card-text d-flex justify-content-start ">Total:</h1>
+      </div>
+      <div class='col-sm'>
+          <h1 class="text-secondary card-text d-flex justify-content-end ">{{total}} €</h1>
+      </div>
+
+    </div>
+  </div>
+
 
   <div class='container p-2 m-2'>
 
   </div>
-  <button type="button" class="btn btn-danger">Order</button>
+  <div class='container pt-5'>
+    <div class='row'>
+      <div class='col-sm'>
+        <button type="button" class="btn btn-danger d-flex justify-content-end">Order</button>
+      </div>
+    </div>
+  </div>
 </div>
+
