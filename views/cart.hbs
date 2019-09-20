@@ -8,7 +8,7 @@
       <br>
       <br>
       <hr>
-      <h2>We are sending this address:</h2>
+      <h2>We are sending to this address:</h2>
       <br>
       <p class="lead">{{user.address}}</p>
     </div>
@@ -49,7 +49,16 @@
   <div class='container pt-5'>
     <div class='row'>
       <div class='col-sm'>
-        <button type="button" class="btn btn-danger d-flex justify-content-end">Order</button>
+
+        <form method='POST' action="/cart/final">
+          <button class="btn nav-item nav-link btn-danger" >Add to cart</button>
+        </form>
+
+        <form method="PUT" action="/user/sign-out">
+          <button class="btn nav-item nav-link">Sign Out</button>
+        </form>
+
+
       </div>
     </div>
   </div>

@@ -6,9 +6,12 @@
 
 
 
-<div class='bg-danger'>
+<div class='bk'>
     <div>
-        <img class='bk pt-2' src="/images/header.svg" alt="site-background">
+        <img class='bk pt-5' src="/images/header.svg" alt="site-background">
+    </div>
+    <div class='container pl-5 text-align-center'>
+        <h1 class='text-white'>Our Menu:</h1>
     </div>
 
 
@@ -16,15 +19,24 @@
         <div class="row">
             {{#each menu}}
             <form>
-                <div class="col">
+                <div class="col  pt-3">
                     <div class="card" style="width: 20rem;">
                         <img src="https://source.unsplash.com/weekly?pizza" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{this.name}}</h5>
-                            <p class="card-text">{{this._id}}</p>
-                            <p class="card-text">{{this.price}}</p>
-                            <p class="card-text">{{this.ingredients}}</p>
-                            <a class="btn btn-success"href="/user/newRoute/{{this._id}}">Add to cart</a>
+                            {{!-- <p class="card-text">{{this._id}}</p> --}}
+                            <div class='container'>
+                                <h5 class="card-text d-flex justify-content-start font-weight-bold">{{this.name}}</h5>
+                                <p class="card-text pt-2">{{this.ingredients}}</p>
+                                <div class='row'>
+                                    <div class='col-sm'>
+                                        <p class="card-text d-flex justify-content-start text-success font-weight-bold">{{this.price}}€</p>
+                                    </div>
+                                    <div class='col-sm text-right'>
+                                        <a class="btn btn-success " href="/user/newRoute/{{this._id}}">Add to cart</a>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -33,6 +45,8 @@
 
         </div>
     </div>
+
+
 
 
 
